@@ -31,7 +31,7 @@ const questions = [
     },
     {
         type: 'input',
-        message: 'Enter your project title.',
+        message: 'Enter your projects title.',
         name: 'title',
         default: 'Project Title',
         validate: function (answer) {
@@ -54,14 +54,48 @@ const questions = [
             }
             return true;
         }
-    },        
+    },
+    {
+        type: 'list',
+        message: 'Enter a license option for your project.',
+        choices: ['MIT','GPL','CC--0','none'],
+        name: 'license'
+    },
+    {
+        type: 'input',
+        message: 'Enter dependecies required for you project to run.',
+        name: 'installation'
+    },
+    {
+        type: 'input',
+        message: 'Enter a brief rundown of your project usage.',
+        name: 'usage'
+    },
+    {
+        type: 'input',
+        message: 'Include a short walkthrough on running tests.',
+        name: 'tests'
+    },
+    {
+        type: 'input',
+        message: 'Include any contributions to your preoject.',
+        name: 'contributing'
+    }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+    try {
+        const userResponses = await inquirer.prompt(questions)
+        console.log('Your responses: ', userResponses)
+        console.log("Thank you for your responses.");
+    } catch (error) {
+        console.log(error)
+    }
+};
 
 // Function call to initialize app
 init();
