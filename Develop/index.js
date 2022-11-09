@@ -59,7 +59,7 @@ const questions = [
     {
         type: 'list',
         message: 'Enter a license option for your project.',
-        choices: ['MIT','GPL','CC--0','none'],
+        choices: ['MIT','BSD','GPL','none'],
         name: 'license'
     },
     {
@@ -85,14 +85,27 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('Your ReadMe has been genereated succesfully!')
+    });
+}
 
 // TODO: Create a function to initialize app
 async function init() {
     try {
         const userResponses = await inquirer.prompt(questions)
+
         console.log('Your responses: ', userResponses)
-        console.log("Thank you for your responses.");
+        
+        const readMeFile = generateMarkdown(userResponses)
+        writeToFile('.ExampleREADME.md', readMeFile)
+
     } catch (error) {
         console.log(error)
     }
