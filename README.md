@@ -12,7 +12,7 @@ https://youtu.be/2dXULTzokU4
 
 to run this application first install all required dependencies. (node.js required)
 
-* ```npm i inquirer@8.2.4``
+* ```npm i inquirer@8.2.4```
 * ```node index.js```
 
 ## User Story
